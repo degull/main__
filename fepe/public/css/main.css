@@ -1,0 +1,264 @@
+@charset "utf-8";
+@import url("./reset.css");
+
+
+#main {
+	width: 100%;
+	height: 100vh;
+	min-height: 600px;
+	overflow: hidden;
+	position: relative;
+	background: linear-gradient(25deg, #2B569D, rgb(53, 74, 210));
+}
+
+
+
+#main section { 
+	width: 20vw;
+	height: 65vh;
+	position: absolute;
+	left: 50%;
+	top: 140%;
+	margin-top: -25vh;
+	margin-left: -10vw;	
+	transition: 1s; 
+}
+#main section article { 
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+#main section article .inner { 
+	width: 100%;
+	height: 100%;
+	background: #f0f7ff;
+	padding: 5vh 2.5vw 8vh;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-content: space-between; 
+	flex-wrap: wrap;
+	border-radius: 10px;
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+	opacity: 0.6; 
+	transform: scale(0.9); 
+	transition: opacity 1s, transform 1s; 
+}
+#main section article.on .inner {
+	opacity: 0.9; 
+	transform: scale(1.1); 
+}
+
+
+#main section article .inner .pic {
+	width: 15vw;
+	height: 15vw;
+	margin: 0px auto;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: 200%;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#main section article .inner .pic::before,
+#main section article .inner .pic::after {
+	content: "";
+	display: block;
+	width: inherit;
+	height: inherit;
+	border-radius: inherit;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-image:url() no-repeat 50% 50% cover;
+	background-position: center;
+	/* background-repeat: inherit; */
+	/* background-size: cover; */
+	transform-origin: center center;	
+}
+#main section article .inner .pic::before {
+	transform: translateY(10%);
+	filter: blur(20px) brightness(1.6);
+}
+
+
+#main section article .inner .txt {
+	text-align: center;
+	position: relative;
+	z-index: 3;
+}
+#main section article .inner .txt h2 {
+	font-size: 17px;
+	color: #222;
+	margin-bottom: 2vh;
+   font-family: 'Sigmar', cursive;
+}
+#main section article .inner .txt p {
+	font-size: 42px;
+   font-size: 500;
+	margin-bottom: 3vh;
+	color: #777;
+   font-family: 'Russo One', sans-serif;
+}
+#main section article .inner .txt ul {
+	display: flex;
+	justify-content: space-around;
+}
+#main section article .inner .txt ul li {
+	cursor: pointer;
+	opacity: 0.6;
+	transition: 0.5s;
+}
+#main section article .inner .txt ul li.play {
+	transform: scale(1.5);
+	opacity: 0.9;
+}
+#main section article .inner .txt ul li:hover {
+	transform: scale(1.5);
+	opacity: 0.8;
+}
+#main section article .inner .txt ul li.play:hover {
+	transform: scale(2);
+	opacity: 1;
+}
+
+
+@keyframes ani {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes ani2 {
+	0% {
+		transform: translateY(10%) rotate(0deg);
+	}
+	100% {
+		transform: translateY(10%) rotate(360deg);
+	}
+}
+
+#main section article .inner .pic.on::after {
+	animation: ani 4s linear infinite;
+}
+#main section article .inner .pic.on::before {
+	animation: ani2 4s linear infinite;
+}
+
+
+#main .btnPrev {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-20vw, -50%);
+	display: flex;
+	align-items: center;
+	text-align: left;
+	cursor: pointer;
+}
+#main .btnPrev span {
+	font: 11px/1 "arial";
+	color: #fff;
+	opacity: 1;
+	transform: translateX(30%);
+	transition: 0.5s;
+}
+#main .btnPrev::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: #fff;
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	transform-origin: left center;
+	transform: rotate(-180deg);
+	transition: 0.5s;
+}
+#main .btnPrev::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: #fff;
+	position: absolute;
+	bottom: 50%;
+	left: 0px;
+	transform-origin: left center;
+	transform: rotate(180deg);
+	transition: 0.5s;
+}
+#main .btnPrev:hover span {
+	opacity: 0;
+	transform: translateX(100%);
+}
+#main .btnPrev:hover::before {
+	transform: rotate(-30deg);
+}
+#main .btnPrev:hover::after {
+	transform: rotate(30deg);
+}
+#main .btnNext {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	transform: translate(20vw, -50%);
+	display: flex;
+	align-items: center;
+	text-align: right;
+	cursor: pointer;
+}
+#main .btnNext span {
+	font: 11px/1 "arial";
+	color: #fff;
+	opacity: 1;
+	transform: translateX(-30%);
+	transition: 0.5s;
+}
+#main .btnNext::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: #fff;
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	transform-origin: right center;
+	transform: rotate(180deg);
+	transition: 0.5s;
+}
+#main .btnNext::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: #fff;
+	position: absolute;
+	bottom: 50%;
+	left: 0px;
+	transform-origin: right center;
+	transform: rotate(-180deg);
+	transition: 0.5s;
+}
+#main .btnNext:hover span {
+	opacity: 0;
+	transform: translateX(-100%);
+}
+#main .btnNext:hover::before {
+	transform: rotate(30deg);
+}
+#main .btnNext:hover::after {
+	transform: rotate(-30deg);
+}
